@@ -1,116 +1,219 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ashok Kumar | Personal Website</title>
+  <title>Ashok Kumar | Personal Portfolio</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
+    body{
+      font-family:'Poppins',sans-serif;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
 
       /* Background Image */
-      background: url('background.jpg') no-repeat center center/cover;
+      background:
+      linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+      url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1920&auto=format&fit=crop')
+      no-repeat center center/cover;
     }
 
-    .container {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 40px;
-      border-radius: 20px;
-      text-align: center;
-      color: white;
-      width: 90%;
-      max-width: 500px;
+    .card{
+      width:90%;
+      max-width:550px;
+      padding:40px;
+      border-radius:25px;
 
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-      backdrop-filter: blur(5px);
+      background:rgba(255,255,255,0.12);
+      backdrop-filter:blur(12px);
+
+      text-align:center;
+      color:white;
+
+      border:1px solid rgba(255,255,255,0.2);
+
+      box-shadow:0 8px 32px rgba(0,0,0,0.35);
+
+      animation:fadeIn 1.5s ease;
     }
 
-    .profile-img {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      border: 5px solid white;
-      object-fit: cover;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 38px;
-      margin-bottom: 10px;
-      color: #00ffd5;
-    }
-
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 25px;
-      background: #00ffd5;
-      color: black;
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: white;
-      transform: scale(1.05);
-    }
-
-    @media(max-width: 600px) {
-      h1 {
-        font-size: 30px;
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(30px);
       }
-
-      p {
-        font-size: 16px;
-      }
-
-      .profile-img {
-        width: 120px;
-        height: 120px;
+      to{
+        opacity:1;
+        transform:translateY(0);
       }
     }
+
+    .profile-img{
+      width:170px;
+      height:170px;
+      border-radius:50%;
+      object-fit:cover;
+
+      border:5px solid #00ffe7;
+
+      box-shadow:0 0 25px rgba(0,255,231,0.7);
+
+      margin-bottom:20px;
+    }
+
+    h1{
+      font-size:42px;
+      margin-bottom:10px;
+      color:#00ffe7;
+    }
+
+    .typing{
+      font-size:20px;
+      color:#ffffff;
+      margin-bottom:20px;
+      min-height:30px;
+    }
+
+    p{
+      font-size:17px;
+      line-height:1.7;
+      color:#f1f1f1;
+      margin-bottom:25px;
+    }
+
+    .buttons{
+      display:flex;
+      justify-content:center;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:12px 28px;
+      border-radius:30px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .btn-primary{
+      background:#00ffe7;
+      color:black;
+    }
+
+    .btn-primary:hover{
+      background:white;
+      transform:scale(1.05);
+    }
+
+    .btn-secondary{
+      border:2px solid #00ffe7;
+      color:white;
+    }
+
+    .btn-secondary:hover{
+      background:#00ffe7;
+      color:black;
+      transform:scale(1.05);
+    }
+
+    @media(max-width:600px){
+
+      .card{
+        padding:30px 20px;
+      }
+
+      h1{
+        font-size:32px;
+      }
+
+      .typing{
+        font-size:18px;
+      }
+
+      p{
+        font-size:15px;
+      }
+
+      .profile-img{
+        width:130px;
+        height:130px;
+      }
+    }
+
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+  <div class="card">
 
-    <!-- Your Photo -->
-    <img src="myphoto.jpg" alt="Ashok Kumar" class="profile-img">
+    <!-- Change this image later -->
+    <img src="https://i.pravatar.cc/300" alt="Profile Photo" class="profile-img">
 
-    <h1>Hello, I'm Ashok Kumar</h1>
+    <h1>Ashok Kumar</h1>
 
-    <p>
-      Welcome to my personal webpage!
-    </p>
+    <div class="typing" id="typing-text"></div>
 
     <p>
-      Passionate about technology, creativity, and learning new things.
+      Welcome to my personal portfolio website.
+      Passionate about technology, creativity, coding,
+      and learning new things every day.
     </p>
 
-    <a href="#" class="btn">Contact Me</a>
+    <div class="buttons">
+      <a href="#" class="btn btn-primary">Contact Me</a>
+      <a href="#" class="btn btn-secondary">My Projects</a>
+    </div>
 
   </div>
+
+  <script>
+    const text = [
+      "Web Developer",
+      "Tech Enthusiast",
+      "Creative Learner",        
+      "Future Engineer"
+    ];
+
+    let count = 0;
+    let index = 0;
+    let currentText = "";
+    let letter = "";
+
+    (function type(){
+
+      if(count === text.length){
+        count = 0;
+      }
+
+      currentText = text[count];
+      letter = currentText.slice(0, ++index);
+
+      document.getElementById('typing-text').textContent = letter;
+
+      if(letter.length === currentText.length){
+        count++;
+        index = 0;
+        setTimeout(type, 1200);
+      } else {
+        setTimeout(type, 120);
+      }
+
+    })();
+  </script>
 
 </body>
 </html>
