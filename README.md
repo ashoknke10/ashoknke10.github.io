@@ -3,7 +3,7 @@ Personal webpage.
 <!DOCTYPE html>
 <html>
 <head>
-  <title> My Personal Website</title>
+  <title>My Personal Website</title>
   <style>
     body {
       font-family: Arial;
@@ -17,6 +17,7 @@ Personal webpage.
   </style>
 </head>
 <body>
-  <h1>Hello, I'm Ashok Kumar</h1>
+  <h1>Hello, I am Ashok Kumar</h1>
   <p>Welcome to my personal webpage!</p>
+</body>
 </html>
