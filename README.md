@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ashok Kumar | Personal Portfolio</title>
+  <title>Ashok Kumar | Portfolio</title>
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
+
     *{
       margin:0;
       padding:0;
@@ -23,28 +23,28 @@
       align-items:center;
       overflow:hidden;
 
-      /* Background Image */
+      /* IIT / Modern Campus Style Background */
       background:
-      linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-      url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1920&auto=format&fit=crop')
+      linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+      url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1920&auto=format&fit=crop')
       no-repeat center center/cover;
     }
 
-    .card{
+    .container{
       width:90%;
-      max-width:550px;
+      max-width:600px;
       padding:40px;
       border-radius:25px;
 
       background:rgba(255,255,255,0.12);
       backdrop-filter:blur(12px);
 
-      text-align:center;
-      color:white;
-
       border:1px solid rgba(255,255,255,0.2);
 
-      box-shadow:0 8px 32px rgba(0,0,0,0.35);
+      box-shadow:0 8px 32px rgba(0,0,0,0.4);
+
+      text-align:center;
+      color:white;
 
       animation:fadeIn 1.5s ease;
     }
@@ -75,22 +75,22 @@
 
     h1{
       font-size:42px;
-      margin-bottom:10px;
       color:#00ffe7;
+      margin-bottom:10px;
     }
 
     .typing{
-      font-size:20px;
-      color:#ffffff;
+      font-size:22px;
       margin-bottom:20px;
-      min-height:30px;
+      color:#ffffff;
+      height:30px;
     }
 
     p{
       font-size:17px;
-      line-height:1.7;
+      line-height:1.8;
+      margin-bottom:30px;
       color:#f1f1f1;
-      margin-bottom:25px;
     }
 
     .buttons{
@@ -115,7 +115,7 @@
 
     .btn-primary:hover{
       background:white;
-      transform:scale(1.05);
+      transform:scale(1.08);
     }
 
     .btn-secondary{
@@ -126,14 +126,20 @@
     .btn-secondary:hover{
       background:#00ffe7;
       color:black;
-      transform:scale(1.05);
+      transform:scale(1.08);
+    }
+
+    /* Watermark */
+    .watermark{
+      position:fixed;
+      bottom:15px;
+      right:20px;
+      color:rgba(255,255,255,0.4);
+      font-size:14px;
+      letter-spacing:2px;
     }
 
     @media(max-width:600px){
-
-      .card{
-        padding:30px 20px;
-      }
 
       h1{
         font-size:32px;
@@ -151,6 +157,10 @@
         width:130px;
         height:130px;
       }
+
+      .container{
+        padding:30px 20px;
+      }
     }
 
   </style>
@@ -158,10 +168,10 @@
 
 <body>
 
-  <div class="card">
+  <div class="container">
 
-    <!-- Change this image later -->
-    <img src="https://i.pravatar.cc/300" alt="Profile Photo" class="profile-img">
+    <!-- Replace later with your image -->
+    <img src="https://i.pravatar.cc/300" alt="Ashok Kumar" class="profile-img">
 
     <h1>Ashok Kumar</h1>
 
@@ -169,8 +179,8 @@
 
     <p>
       Welcome to my personal portfolio website.
-      Passionate about technology, creativity, coding,
-      and learning new things every day.
+      Passionate about technology, innovation,
+      coding, and building creative solutions.
     </p>
 
     <div class="buttons">
@@ -180,39 +190,69 @@
 
   </div>
 
+  <div class="watermark">
+    Inspired by IIT Tirupati
+  </div>
+
   <script>
-    const text = [
-      "Web Developer",
+
+    const words = [
+      "Future Engineer",
       "Tech Enthusiast",
-      "Creative Learner",        
-      "Future Engineer"
+      "Web Developer",
+      "Creative Learner"
     ];
 
-    let count = 0;
-    let index = 0;
-    let currentText = "";
-    let letter = "";
+    let i = 0;
+    let timer;
 
-    (function type(){
+    function typingEffect() {
 
-      if(count === text.length){
-        count = 0;
-      }
+      let word = words[i].split("");
+      var loopTyping = function() {
 
-      currentText = text[count];
-      letter = currentText.slice(0, ++index);
+        if(word.length > 0) {
+          document.getElementById('typing-text').innerHTML += word.shift();
+        } else {
+          deletingEffect();
+          return false;
+        };
 
-      document.getElementById('typing-text').textContent = letter;
+        timer = setTimeout(loopTyping, 120);
 
-      if(letter.length === currentText.length){
-        count++;
-        index = 0;
-        setTimeout(type, 1200);
-      } else {
-        setTimeout(type, 120);
-      }
+      };
 
-    })();
+      loopTyping();
+    };
+
+    function deletingEffect() {
+
+      let word = words[i].split("");
+      var loopDeleting = function() {
+
+        if(word.length > 0) {
+          word.pop();
+          document.getElementById('typing-text').innerHTML = word.join("");
+        } else {
+          if(words.length > (i + 1)) {
+            i++;
+          } else {
+            i = 0;
+          };
+          typingEffect();
+          return false;
+        };
+
+        timer = setTimeout(loopDeleting, 70);
+
+      };
+
+      loopDeleting();
+
+    };
+
+    typingEffect();
+
   </script>
 
 </body>
