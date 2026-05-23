@@ -23,13 +23,13 @@
 
     body{
       font-family:'Poppins',sans-serif;
-      min-height:100vh;
+      height:100vh;
       display:flex;
       justify-content:center;
       align-items:center;
       overflow:hidden;
 
-      /* IIT Tirupati Style Background */
+      /* Background Image */
       background:
       linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
       url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1920&auto=format&fit=crop')
@@ -60,7 +60,6 @@
         opacity:0;
         transform:translateY(30px);
       }
-
       to{
         opacity:1;
         transform:translateY(0);
@@ -74,7 +73,6 @@
       object-fit:cover;
 
       border:5px solid #00ffe7;
-
       box-shadow:0 0 30px rgba(0,255,231,0.7);
 
       margin-bottom:20px;
@@ -89,16 +87,15 @@
     .typing{
       font-size:22px;
       margin-bottom:20px;
-      color:#ffffff;
       height:35px;
       font-weight:500;
     }
 
     .about{
-      font-size:17px;
-      line-height:1.9;
-      color:#f1f1f1;
+      font-size:16.5px;
+      line-height:1.8;
       margin-bottom:30px;
+      color:#f1f1f1;
     }
 
     .buttons{
@@ -106,7 +103,7 @@
       justify-content:center;
       gap:15px;
       flex-wrap:wrap;
-      margin-bottom:25px;
+      margin-bottom:20px;
     }
 
     .btn{
@@ -138,10 +135,6 @@
       transform:scale(1.08);
     }
 
-    .social-icons{
-      margin-top:10px;
-    }
-
     .social-icons a{
       color:white;
       font-size:24px;
@@ -158,19 +151,15 @@
       position:fixed;
       bottom:15px;
       right:20px;
-      color:rgba(255,255,255,0.35);
       font-size:13px;
+      color:rgba(255,255,255,0.4);
       letter-spacing:2px;
     }
 
     @media(max-width:768px){
 
-      .container{
-        padding:30px 20px;
-      }
-
       h1{
-        font-size:34px;
+        font-size:32px;
       }
 
       .typing{
@@ -178,7 +167,7 @@
       }
 
       .about{
-        font-size:15px;
+        font-size:14.5px;
       }
 
       .profile-img{
@@ -188,15 +177,14 @@
     }
 
   </style>
-
 </head>
 
 <body>
 
   <div class="container">
 
-    <!-- Replace this later with your own image -->
-    <img src="https://i.pravatar.cc/300" alt="Ashok Kumar" class="profile-img">
+    <!-- Profile Image (replace later) -->
+    <img src="https://i.pravatar.cc/300" class="profile-img" alt="Profile">
 
     <h1>Ashok Kumar</h1>
 
@@ -205,38 +193,32 @@
     <div class="about">
 
       Hello! I'm <strong>Ashok Kumar</strong>, currently pursuing
-      <strong>M.Tech in Thermal Engineering at IIT Tirupati</strong> and
-      working as a <strong>Proposal Engineer at Thermal Systems Pvt. Ltd.</strong>
+      <strong>M.Tech in Thermal Engineering at IIT Tirupati</strong> and working as a
+      <strong>Proposal Engineer at Thermal Systems Pvt. Ltd.</strong>
 
       <br><br>
 
-      I graduated from <strong>IIT Tirupati</strong> and have a strong passion
-      for thermal engineering, industrial systems, innovation, and technology.
-      I enjoy solving real-world engineering problems, learning modern tools,
-      and building impactful solutions.
+      I graduated from <strong>IIT Tirupati</strong> and have strong interest in
+      thermal systems, engineering design, industrial problem solving, and modern technologies.
+      I enjoy learning, research, and building impactful engineering solutions.
 
     </div>
 
     <div class="buttons">
 
-      <a href="#" class="btn btn-primary">
-        Contact Me
-      </a>
-
-      <a href="#" class="btn btn-secondary">
-        My Projects
-      </a>
+      <a href="#" class="btn btn-primary">Contact Me</a>
+      <a href="#" class="btn btn-secondary">My Projects</a>
 
     </div>
 
-    <!-- Social Media Icons -->
+    <!-- Social Links -->
     <div class="social-icons">
 
       <a href="https://www.instagram.com/ashoknke10" target="_blank">
         <i class="fab fa-instagram"></i>
       </a>
 
-      <a href="#" target="_blank">
+      <a href="https://www.linkedin.com/in/ashoknke10" target="_blank">
         <i class="fab fa-linkedin"></i>
       </a>
 
@@ -248,7 +230,6 @@
 
   </div>
 
-  <!-- Watermark -->
   <div class="watermark">
     IIT Tirupati • Thermal Engineering
   </div>
@@ -257,73 +238,36 @@
 
     const words = [
       "M.Tech @ IIT Tirupati",
-      "Thermal Engineer",
       "Proposal Engineer",
-      "Tech Enthusiast",
-      "Problem Solver"
+      "Thermal Engineer",
+      "Problem Solver",
+      "Tech Enthusiast"
     ];
 
     let i = 0;
-    let timer;
 
     function typingEffect() {
 
       let word = words[i].split("");
+      let el = document.getElementById("typing-text");
 
-      var loopTyping = function() {
+      el.textContent = "";
 
-        if(word.length > 0) {
+      let interval = setInterval(() => {
 
-          document.getElementById('typing-text').innerHTML += word.shift();
-
+        if(word.length > 0){
+          el.textContent += word.shift();
         } else {
-
-          deletingEffect();
-          return false;
+          clearInterval(interval);
+          setTimeout(() => {
+            i = (i + 1) % words.length;
+            typingEffect();
+          }, 1200);
         }
 
-        timer = setTimeout(loopTyping, 120);
+      }, 100);
 
-      };
-
-      loopTyping();
-
-    };
-
-    function deletingEffect() {
-
-      let word = words[i].split("");
-
-      var loopDeleting = function() {
-
-        if(word.length > 0) {
-
-          word.pop();
-
-          document.getElementById('typing-text').innerHTML = word.join("");
-
-        } else {
-
-          if(words.length > (i + 1)) {
-
-            i++;
-
-          } else {
-
-            i = 0;
-          }
-
-          typingEffect();
-          return false;
-        }
-
-        timer = setTimeout(loopDeleting, 70);
-
-      };
-
-      loopDeleting();
-
-    };
+    }
 
     typingEffect();
 
